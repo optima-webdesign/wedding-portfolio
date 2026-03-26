@@ -8,6 +8,8 @@ import { portfolioData } from "@/lib/data";
 export default function ContactPage() {
   const { phone } = portfolioData?.contact || { phone: "9898697991" };
   
+  const fullAddress = "SHED NO-29/1, BARCELONA ESTATE, Sardar Patel Ring Rd, near ODHAV CROSS ROAD, Odhav, Ahmedabad, Gujarat 382345";
+  
   const cmykGradient = "bg-linear-to-r from-cyan-500 via-blue-500 via-red-500 to-yellow-400";
 
   const handleWhatsAppSubmit = (e) => {
@@ -95,32 +97,40 @@ export default function ContactPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-12">
-          {[
-            { icon: <FiPhone className="text-cyan-600" />, title: "Call Us", detail: `+${phone}`, bg: "bg-cyan-50" },
-            { icon: <FiMail className="text-red-500" />, title: "Email Us", detail: "allbum@coloursphotobooks.in", bg: "bg-red-50" },
-            { icon: <FiMapPin className="text-yellow-600" />, title: "Studio", detail: "Ahmedabad, Gujarat", bg: "bg-yellow-50" }
-          ].map((item, idx) => (
-            <motion.div 
-              key={idx} 
-              whileHover={{ y: -5 }}
-              className="bg-white p-8 md:p-10 rounded-[2.5rem] flex flex-col items-center text-center shadow-sm border border-neutral-100"
-            >
-              <div className={`w-14 h-14 md:w-16 md:h-16 ${item.bg} rounded-2xl flex items-center justify-center mb-5 md:mb-6`}>
-                <div className="text-2xl">{item.icon}</div>
-              </div>
-              <p className="text-neutral-400 font-bold uppercase tracking-widest text-[9px] md:text-[10px] mb-2">{item.title}</p>
-              <h4 className="text-lg md:text-xl font-black text-neutral-900">{item.detail}</h4>
-            </motion.div>
-          ))}
+          
+          <motion.div whileHover={{ y: -5 }} className="bg-white p-8 md:p-10 rounded-[2.5rem] flex flex-col items-center text-center shadow-sm border border-neutral-100">
+            <div className="w-14 h-14 md:w-16 md:h-16 bg-cyan-50 rounded-2xl flex items-center justify-center mb-5 md:mb-6">
+              <FiPhone className="text-2xl text-cyan-600" />
+            </div>
+            <p className="text-neutral-400 font-bold uppercase tracking-widest text-[9px] md:text-[10px] mb-2">Call Us</p>
+            <h4 className="text-lg md:text-xl font-black text-neutral-900">+{phone}</h4>
+          </motion.div>
+
+          <motion.div whileHover={{ y: -5 }} className="bg-white p-8 md:p-10 rounded-[2.5rem] flex flex-col items-center text-center shadow-sm border border-neutral-100">
+            <div className="w-14 h-14 md:w-16 md:h-16 bg-red-50 rounded-2xl flex items-center justify-center mb-5 md:mb-6">
+              <FiMail className="text-2xl text-red-500" />
+            </div>
+            <p className="text-neutral-400 font-bold uppercase tracking-widest text-[9px] md:text-[10px] mb-2">Email Us</p>
+            <h4 className="text-lg md:text-xl font-black text-neutral-900">allbum@coloursphotobooks.in</h4>
+          </motion.div>
+
+          <motion.div whileHover={{ y: -5 }} className="bg-white p-8 md:p-10 rounded-[2.5rem] flex flex-col items-center text-center shadow-sm border border-neutral-100">
+            <div className="w-14 h-14 md:w-16 md:h-16 bg-yellow-50 rounded-2xl flex items-center justify-center mb-5 md:mb-6">
+              <FiMapPin className="text-2xl text-yellow-600" />
+            </div>
+            <p className="text-neutral-400 font-bold uppercase tracking-widest text-[9px] md:text-[10px] mb-2">Studio</p>
+            <h4 className="text-sm font-bold text-neutral-900 leading-relaxed px-2">{fullAddress}</h4>
+          </motion.div>
+
         </div>
 
         <motion.div 
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          className="w-full h-87.5 md:h-125 rounded-[2.5rem] md:rounded-[4rem] overflow-hidden relative border-[6px] md:border-12 border-white shadow-2xl"
+          className="w-full h-87.5 md:h-125 rounded-[2.5rem] md:rounded-[4rem] overflow-hidden relative border-6 md:border-12 border-white shadow-2xl"
         >
           <iframe 
-            src="https://maps.app.goo.gl/zwKJTCPQyBEJux2B7?g_st=aw" 
+            src={`http://googleusercontent.com/maps.google.com/6{encodeURIComponent(fullAddress)}&t=&z=14&ie=UTF8&iwloc=&output=embed`}
             width="100%" 
             height="100%" 
             style={{ border: 0 }} 

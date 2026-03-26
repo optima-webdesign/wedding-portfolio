@@ -9,6 +9,7 @@ import VisitStudio from "@/components/VisitStudio";
 import OfferGallery from "@/components/OfferGallery";
 import Gallery from "@/components/Gallery";
 import AboutPreview from "@/components/AboutPreview";
+import CTASection from "@/components/CTA";
 
 // Baaki components hum yahan import karenge jaise jaise banenge
 
@@ -41,6 +42,7 @@ export default function Home() {
       <OfferGallery />
       <Gallery />
       <VisitStudio />
+      <CTASection />
       
     </main>
   );

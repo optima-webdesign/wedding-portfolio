@@ -13,7 +13,7 @@ export default function VisitStudio() {
   const displayPhone = contactData.displayPhone || "+91 98986 97991";
   const email = contactData.email || "allbum@coloursphotobooks.in";
 
-  const mapLink = "https://maps.app.goo.gl/zwKJTCPQyBEJux2B7?g_st=aw";
+  const mapLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
 
   const contactDetails = [
     {
@@ -131,7 +131,7 @@ export default function VisitStudio() {
             href={mapLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative w-full h-full rounded-2xl lg:rounded-[2.5rem] overflow-hidden shadow-inner cursor-pointer block"
+            className="relative w-full h-full rounded-3xl overflow-hidden shadow-inner cursor-pointer block"
             aria-label="Open location in Google Maps"
           >
             <Image
