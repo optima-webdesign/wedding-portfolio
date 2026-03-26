@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import { FiArrowRight, FiZoomIn } from "react-icons/fi";
 import { galleryData } from "@/lib/galleryData"; 
 
@@ -20,7 +20,7 @@ export default function HomeGallery() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
   };
 
-  const topFourImages = galleryData.slice(0, 4);
+  const topImages = galleryData.slice(0, 8);
 
   return (
     <section id="collection" className="relative py-24 px-5 md:px-8 bg-neutral-50 overflow-hidden">
@@ -69,33 +69,32 @@ export default function HomeGallery() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-center"
         >
-          {topFourImages.map((image, index) => {
-             const isEven = index % 2 !== 0; 
-             const layoutClass = isEven ? "lg:mt-16 aspect-square" : "lg:mt-0 aspect-[4/5]";
-
+          {topImages.map((image) => {
             return (
               <motion.div 
                 key={image.id} 
                 variants={itemVariants}
-                className={`relative group ${layoutClass}`}
+                className="relative group"
               >
-                <div className="relative w-full h-full overflow-hidden rounded-4xl border-4 border-white bg-neutral-200 shadow-[0_10px_40px_rgba(0,0,0,0.08)] group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)] transition-shadow duration-500">
+                <Link href="/portfolio" className="relative block w-full overflow-hidden rounded-2xl md:rounded-4xl border-[3px] border-white bg-white shadow-sm hover:shadow-[0_15px_40px_rgba(0,0,0,0.1)] transition-shadow duration-500">
+                  
                   <Image
                     src={image.src}
                     alt={image.alt || "Gallery Image"}
-                    fill
+                    width={800}
+                    height={1000}
+                    className="w-full h-auto block transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    className="object-cover transition-transform duration-[2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
                   />
                   
-                  <div className="absolute inset-0 bg-neutral-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+                  <div className="absolute inset-0 bg-neutral-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[1px]">
                      <div className="bg-white text-neutral-900 p-4 rounded-full translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 shadow-xl">
                        <FiZoomIn className="text-xl" />
                      </div>
                   </div>
-                </div>
+                </Link>
               </motion.div>
             )
           })}

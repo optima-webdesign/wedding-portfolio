@@ -1,57 +1,34 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
-import { FiMapPin, FiPhone, FiMail, FiSend, FiCheckCircle } from "react-icons/fi";
+import { motion } from "framer-motion";
+import { FiMapPin, FiPhone, FiMail } from "react-icons/fi";
+import { FaWhatsapp } from "react-icons/fa";
 import { portfolioData } from "@/lib/data";
 
 export default function ContactPage() {
-  const { phone } = portfolioData?.contact || { phone: "919898697991" };
+  const { phone } = portfolioData?.contact || { phone: "9898697991" };
   
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSent, setIsSent] = useState(false);
-
   const cmykGradient = "bg-linear-to-r from-cyan-500 via-blue-500 via-red-500 to-yellow-400";
 
-  const handleSubmit = async (e) => {
+  const handleWhatsAppSubmit = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-
+    
     const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries());
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const clientPhone = formData.get('phone');
+    const service = formData.get('service');
+    const message = formData.get('message');
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        setIsSubmitting(false);
-        setIsSent(true);
-        e.target.reset(); 
-        
-        setTimeout(() => setIsSent(false), 5000); 
-      } else {
-        alert("Something went wrong: " + result.message);
-        setIsSubmitting(false);
-      }
-    } catch (error) {
-      console.error("Error sending message:", error);
-      alert("Error sending message. Check your internet connection.");
-      setIsSubmitting(false);
-    }
+    const waText = `Hello Colours Photobooks!%0A%0A*New Inquiry from Website*%0A*Name:* ${name}%0A*Email:* ${email}%0A*Phone:* ${clientPhone}%0A*Service:* ${service}%0A%0A*Message:*%0A${message}`;
+    
+    const waUrl = `https://wa.me/${phone}?text=${waText}`;
+    window.open(waUrl, '_blank');
   };
 
   return (
     <main className="min-h-screen bg-[#f8fafb] pt-24 md:pt-32 pb-16 px-4 md:px-8 selection:bg-cyan-500/20">
-      <div className="max-w-325 mx-auto">
+      <div className="max-w-360 mx-auto">
         
         <div className="text-center mb-12 md:mb-16 relative">
           <motion.h1 
@@ -77,72 +54,50 @@ export default function ContactPage() {
             viewport={{ once: true }}
             className="lg:col-span-2 bg-white p-6 md:p-12 rounded-[2.5rem] md:rounded-[3.5rem] shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-neutral-100"
           >
-            <AnimatePresence mode="wait">
-              {isSent ? (
-                <motion.div key="success" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-16 md:py-20">
-                  <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <FiCheckCircle className="text-5xl text-green-500" />
-                  </div>
-                  <h3 className="text-2xl md:text-3xl font-bold text-neutral-900">Message Sent!</h3>
-                  <p className="text-neutral-500 mt-2">We&apos;ve received your inquiry. We&apos;ll reply soon.</p>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
-                    <input required name="email" type="email" placeholder="Email Address" className="w-full px-6 py-4 md:px-7 md:py-5 bg-[#f1f5f6] rounded-full focus:outline-none focus:ring-2 focus:ring-cyan-500/20 transition-all border-none font-medium text-sm md:text-base" />
-                    <input required name="phone" type="tel" placeholder="Phone Number" className="w-full px-6 py-4 md:px-7 md:py-5 bg-[#f1f5f6] rounded-full focus:outline-none focus:ring-2 focus:ring-cyan-500/20 transition-all border-none font-medium text-sm md:text-base" />
-                  </div>
-                  <input required name="name" type="text" placeholder="Full Name" className="w-full px-6 py-4 md:px-7 md:py-5 bg-[#f1f5f6] rounded-full focus:outline-none focus:ring-2 focus:ring-cyan-500/20 transition-all border-none font-medium text-sm md:text-base" />
-                  
-                  <select required name="service" defaultValue="" className="w-full px-6 py-4 md:px-7 md:py-5 bg-[#f1f5f6] rounded-full focus:outline-none focus:ring-2 focus:ring-cyan-500/20 appearance-none cursor-pointer font-medium text-neutral-500 text-sm md:text-base">
-                    <option value="" disabled>Select Service</option>
-                    <option value="Premium Wedding Album">Premium Wedding Album</option>
-                    <option value="Coffee Table Photobook">Coffee Table Photobook</option>
-                    <option value="Mini Parent Books">Mini Parent Books</option>
-                  </select>
+            <form onSubmit={handleWhatsAppSubmit} className="space-y-4 md:space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+                <input required name="email" type="email" placeholder="Email Address" className="w-full px-6 py-4 md:px-7 md:py-5 bg-[#f1f5f6] rounded-full focus:outline-none focus:ring-2 focus:ring-[#25D366]/30 transition-all border-none font-medium text-sm md:text-base" />
+                <input required name="phone" type="tel" placeholder="Phone Number" className="w-full px-6 py-4 md:px-7 md:py-5 bg-[#f1f5f6] rounded-full focus:outline-none focus:ring-2 focus:ring-[#25D366]/30 transition-all border-none font-medium text-sm md:text-base" />
+              </div>
+              <input required name="name" type="text" placeholder="Full Name" className="w-full px-6 py-4 md:px-7 md:py-5 bg-[#f1f5f6] rounded-full focus:outline-none focus:ring-2 focus:ring-[#25D366]/30 transition-all border-none font-medium text-sm md:text-base" />
+              
+              <select required name="service" defaultValue="" className="w-full px-6 py-4 md:px-7 md:py-5 bg-[#f1f5f6] rounded-full focus:outline-none focus:ring-2 focus:ring-[#25D366]/30 appearance-none cursor-pointer font-medium text-neutral-500 text-sm md:text-base">
+                <option value="" disabled>Select Service</option>
+                <option value="Premium Wedding Album">Premium Wedding Album</option>
+                <option value="Coffee Table Photobook">Coffee Table Photobook</option>
+                <option value="Mini Parent Books">Mini Parent Books</option>
+              </select>
 
-                  <textarea required name="message" rows="4" placeholder="Your Message" className="w-full px-6 py-5 md:px-7 md:py-6 bg-[#f1f5f6] rounded-4xl focus:outline-none focus:ring-2 focus:ring-cyan-500/20 transition-all resize-none border-none font-medium text-sm md:text-base"></textarea>
-                  
-                  <button disabled={isSubmitting} type="submit" className="relative w-full md:w-auto overflow-hidden group px-10 py-4 md:px-12 md:py-5 text-white rounded-full font-bold uppercase tracking-widest transition-all shadow-xl active:scale-95 bg-neutral-900 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed">
-                    <div className={`absolute inset-0 ${cmykGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
-                    <span className="relative z-10 flex items-center gap-2 justify-center">
-                      {isSubmitting ? (
-                        <>Sending...</>
-                      ) : (
-                        <>
-                          <FiSend />
-                          Submit Message
-                        </>
-                      )}
-                    </span>
-                  </button>
-                </form>
-              )}
-            </AnimatePresence>
+              <textarea required name="message" rows="4" placeholder="Your Message" className="w-full px-6 py-5 md:px-7 md:py-6 bg-[#f1f5f6] rounded-3xl focus:outline-none focus:ring-2 focus:ring-[#25D366]/30 transition-all resize-none border-none font-medium text-sm md:text-base"></textarea>
+              
+              <button type="submit" className="relative w-full md:w-auto px-10 py-4 md:px-12 md:py-5 text-white rounded-full font-bold uppercase tracking-widest transition-all shadow-xl active:scale-95 bg-[#25D366] hover:bg-green-600 cursor-pointer flex items-center justify-center gap-3">
+                <FaWhatsapp className="text-2xl" />
+                Send via WhatsApp
+              </button>
+            </form>
           </motion.div>
 
           <div className="bg-neutral-900 p-8 md:p-12 rounded-[2.5rem] md:rounded-[3.5rem] text-white flex flex-col justify-center relative overflow-hidden group">
             <div className={`absolute -top-20 -right-20 w-64 h-64 ${cmykGradient} opacity-20 blur-[80px] rounded-full`}></div>
-            <h3 className="text-2xl md:text-3xl font-black mb-4 relative z-10 leading-tight">Our Newsletters</h3>
-            <p className="text-neutral-400 mb-8 text-sm md:text-base relative z-10">Get updates on new handcrafted designs and exclusive offers.</p>
+            <h3 className="text-2xl md:text-3xl font-black mb-4 relative z-10 leading-tight">Fast Reply?</h3>
+            <p className="text-neutral-400 mb-8 text-sm md:text-base relative z-10">Skip the form and chat directly with our team on WhatsApp for instant support.</p>
             
-            <form onSubmit={handleSubmit} className="relative z-10 space-y-4">
-              <input type="hidden" name="name" value="Newsletter Subscriber" />
-              <input type="hidden" name="message" value="Please add me to your newsletter list." />
-              <input type="hidden" name="service" value="Newsletter Subscription" />
-              
-              <input required name="email" type="email" placeholder="Your Email" className="w-full px-6 py-4 bg-white/10 border border-white/10 rounded-full text-white placeholder:text-neutral-500 focus:outline-none focus:bg-white/20 transition-all text-sm" />
-              <button type="submit" disabled={isSubmitting} className="w-full py-4 bg-white text-neutral-900 rounded-full font-bold uppercase tracking-wider text-xs hover:bg-cyan-400 transition-colors disabled:opacity-50">
-                {isSubmitting ? "Subscribing..." : "Subscribe Now"}
-              </button>
-            </form>
+            <a 
+              href={`https://wa.me/${phone}?text=Hi, I want to know more about your photobooks!`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative z-10 w-full py-4 bg-white text-neutral-900 rounded-full font-bold uppercase tracking-wider text-xs md:text-sm text-center hover:bg-green-500 hover:text-white transition-all shadow-lg flex justify-center items-center gap-2"
+            >
+              <FaWhatsapp className="text-lg" />
+              Chat Now
+            </a>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-12">
           {[
-            { icon: <FiPhone className="text-cyan-600" />, title: "Call Us", detail: `+91 ${phone}`, bg: "bg-cyan-50" },
-            { icon: <FiMail className="text-red-500" />, title: "Email Us", detail: "print@colourspress.in", bg: "bg-red-50" },
+            { icon: <FiPhone className="text-cyan-600" />, title: "Call Us", detail: `+${phone}`, bg: "bg-cyan-50" },
+            { icon: <FiMail className="text-red-500" />, title: "Email Us", detail: "allbum@coloursphotobooks.in", bg: "bg-red-50" },
             { icon: <FiMapPin className="text-yellow-600" />, title: "Studio", detail: "Ahmedabad, Gujarat", bg: "bg-yellow-50" }
           ].map((item, idx) => (
             <motion.div 
@@ -165,7 +120,7 @@ export default function ContactPage() {
           className="w-full h-87.5 md:h-125 rounded-[2.5rem] md:rounded-[4rem] overflow-hidden relative border-[6px] md:border-12 border-white shadow-2xl"
         >
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117498.93282216719!2d72.5028477!3d23.028919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+            src="https://maps.app.goo.gl/zwKJTCPQyBEJux2B7?g_st=aw" 
             width="100%" 
             height="100%" 
             style={{ border: 0 }} 

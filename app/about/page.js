@@ -84,7 +84,7 @@ export default function AboutFull() {
             className="relative aspect-4/3 lg:aspect-square w-full rounded-4xl lg:rounded-[3rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.06)] border-8 border-white"
           >
             <Image 
-              src="https://images.unsplash.com/photo-1544928147-79a2dbc1f389?q=80&w=1000&auto=format&fit=crop" 
+              src="/allbum/about2.png" 
               alt="Artisan binding a wedding album"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"

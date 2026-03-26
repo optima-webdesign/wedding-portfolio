@@ -8,15 +8,15 @@ import Image from "next/image";
 
 export default function Footer() {
   const contactData = portfolioData?.contact || {};
-  const location = contactData.location || "Navrangpura, Ahmedabad, Gujarat 380009";
+  
+  const location = contactData.location || "SHED NO-29/1, BARCELONA ESTATE, Sardar Patel Ring Rd, near ODHAV CROSS ROAD, Odhav, Ahmedabad, Gujarat 382345";
+  
   const phone = contactData.phone || "919898697991";
-
-  const cmykGradient = "bg-linear-to-r from-cyan-500 via-blue-500 via-red-500 to-yellow-400";
 
   return (
     <footer className="relative bg-white text-neutral-600 pt-20 pb-10 px-6 md:px-12 z-20 border-t border-neutral-100">
       
-      <div className={`absolute top-0 left-0 w-full h-0.5 ${cmykGradient} opacity-90`}></div>
+      <div className="absolute top-0 left-0 w-full h-0.5 bg-linear-to-r from-blue-600 to-cyan-500 opacity-90"></div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-8 mb-16 relative z-10">
         
@@ -77,34 +77,49 @@ export default function Footer() {
           <h4 className="text-neutral-900 font-bold mb-3 tracking-wide uppercase text-sm">Get in Touch</h4>
           
           <div className="flex items-start gap-4 text-neutral-600 group">
-            <div className="w-10 h-10 rounded-full bg-cyan-50 flex items-center justify-center shrink-0 group-hover:bg-cyan-100 transition-colors">
+            <div className="w-10 h-10 rounded-full bg-cyan-50 flex items-center justify-center shrink-0 group-hover:bg-cyan-100 transition-colors mt-1">
               <FiMapPin className="text-lg text-cyan-500" />
             </div>
-            <p className="font-medium text-sm pt-2">{location}</p>
+            <p className="font-medium text-sm leading-relaxed pt-1 pr-4">{location}</p>
           </div>
           
           <div className="flex items-center gap-4 text-neutral-600 group">
             <div className="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center shrink-0 group-hover:bg-red-100 transition-colors">
               <FiPhone className="text-lg text-red-500" />
             </div>
-            <p className="font-medium text-sm">+91 {phone}</p>
+            <p className="font-medium text-sm">+{phone}</p>
           </div>
           
           <div className="flex items-center gap-4 text-neutral-600 group">
             <div className="w-10 h-10 rounded-full bg-yellow-50 flex items-center justify-center shrink-0 group-hover:bg-yellow-100 transition-colors">
               <FiMail className="text-lg text-yellow-500" />
             </div>
-            <p className="font-medium text-sm">print@colourspress.in</p>
+            <p className="font-medium text-sm break-all">allbum@coloursphotobooks.in</p>
           </div>
         </div>
 
       </div>
 
-      <div className="max-w-7xl mx-auto border-t border-neutral-200 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-semibold text-neutral-400 uppercase tracking-widest">
-        <p>&copy; {new Date().getFullYear()} Colours Photobooks Press. All rights reserved.</p>
+      <div className="max-w-7xl mx-auto border-t border-neutral-200 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] md:text-xs font-semibold text-neutral-400 uppercase tracking-widest">
+        
+        <p>&copy; {new Date().getFullYear()} Colours Photobooks Press.</p>
+        
         <p className="flex items-center gap-2">
-          Printed in True Colours in Ahmedabad <span className="w-2 h-2 rounded-full bg-linear-to-r from-cyan-500 to-blue-500 inline-block"></span>
+          Printed in True Colours <span className="w-2 h-2 rounded-full bg-linear-to-r from-blue-600 to-cyan-500 hidden md:inline-block"></span>
         </p>
+
+        <p className="flex items-center gap-1.5">
+          Designed by{" "}
+          <a 
+            href="https://optimawebdesign.in/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-neutral-600 hover:text-cyan-500 transition-colors border-b border-transparent hover:border-cyan-500"
+          >
+            Optima Web Design
+          </a>
+        </p>
+
       </div>
     </footer>
   );

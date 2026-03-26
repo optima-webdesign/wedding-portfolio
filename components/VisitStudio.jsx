@@ -7,12 +7,13 @@ import { portfolioData } from "@/lib/data";
 
 export default function VisitStudio() {
   const contactData = portfolioData?.contact || {};
-  const address = contactData.address || "Colours Photobooks Press, CG Road, Ahmedabad, Gujarat 380009";
+  
+  const address = contactData.address || "SHED NO-29/1, BARCELONA ESTATE, Sardar Patel Ring Rd, near ODHAV CROSS ROAD, Odhav, Ahmedabad, Gujarat 382345";
   const phone = contactData.phone || "919898697991";
   const displayPhone = contactData.displayPhone || "+91 98986 97991";
-  const email = contactData.email || "print@colourspress.in";
+  const email = contactData.email || "allbum@coloursphotobooks.in";
 
-  const mapLink = `https://maps.google.com/?q=$${encodeURIComponent(address)}`;
+  const mapLink = "https://maps.app.goo.gl/zwKJTCPQyBEJux2B7?g_st=aw";
 
   const contactDetails = [
     {
@@ -110,7 +111,7 @@ export default function VisitStudio() {
                   <h3 className="text-neutral-900 font-bold text-base sm:text-lg mb-1 group-hover:text-blue-600 transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-neutral-500 font-medium text-sm sm:text-base leading-relaxed max-w-sm">
+                  <p className="text-neutral-500 font-medium text-sm sm:text-base leading-relaxed max-w-sm pr-2">
                     {item.detail}
                   </p>
                 </div>
@@ -130,7 +131,7 @@ export default function VisitStudio() {
             href={mapLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative w-full h-full rounded-3xl lg:rounded-[2.5rem] overflow-hidden shadow-inner cursor-pointer block"
+            className="relative w-full h-full rounded-2xl lg:rounded-[2.5rem] overflow-hidden shadow-inner cursor-pointer block"
             aria-label="Open location in Google Maps"
           >
             <Image

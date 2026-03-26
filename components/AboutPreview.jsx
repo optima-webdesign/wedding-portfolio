@@ -1,3 +1,4 @@
+// components/AboutPreview.jsx
 "use client";
 
 import { motion } from "framer-motion";
@@ -35,7 +36,7 @@ export default function AboutPreview() {
         >
           <div className="absolute left-0 sm:left-4 lg:left-0 top-0 w-[80%] sm:w-[75%] h-[85%] rounded-4xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.08)]">
             <Image
-              src="https://images.unsplash.com/photo-1544928147-79a2dbc1f389?q=80&w=1000&auto=format&fit=crop" 
+              src="/allbum/about1.png" 
               alt="Colours Photobooks Press Craftsmanship"
               fill
               sizes="(max-width: 1024px) 80vw, 40vw"
@@ -46,17 +47,12 @@ export default function AboutPreview() {
 
           <div className="absolute right-0 sm:right-4 bottom-0 w-[55%] h-[50%] rounded-4xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.15)] border-[6px] border-white bg-neutral-100">
             <Image
-              src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800&auto=format&fit=crop" 
+              src="/allbum/about2.png" 
               alt="HP Indigo Printing Detail"
               fill
               sizes="(max-width: 1024px) 50vw, 25vw"
               className="object-cover"
             />
-          </div>
-
-          <div className="absolute top-10 right-4 sm:right-16 bg-white/90 backdrop-blur-md px-6 py-4 rounded-2xl shadow-xl border border-neutral-100 flex flex-col items-center justify-center">
-            <span className="text-3xl font-black text-neutral-900">10+</span>
-            <span className="text-xs font-bold uppercase tracking-widest text-neutral-500">Years of Craft</span>
           </div>
         </motion.div>
 
