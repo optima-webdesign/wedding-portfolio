@@ -13,7 +13,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("Gallery");
 
-  const phone = portfolioData?.contact?.phone || "919898697991";
+  const phone = portfolioData?.contact?.phone || "917383021002";
   const whatsappMessage = portfolioData?.contact?.whatsappMessage || "Hi, I want to inquire about photobook printing.";
   const whatsappLink = `https://wa.me/${phone}?text=${encodeURIComponent(whatsappMessage)}`;
 
