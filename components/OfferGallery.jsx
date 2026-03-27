@@ -8,7 +8,7 @@ import Image from "next/image";
 
 export default function OfferBanner() {
   const contactData = portfolioData?.contact || {};
-  const phone = contactData.phone || "919898697991";
+  const phone = contactData.phone || "917383021002";
 
   const offerImages = [
     { id: 1, src: "/offer/offer1.jpg" },

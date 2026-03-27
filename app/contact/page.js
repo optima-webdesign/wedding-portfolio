@@ -6,7 +6,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { portfolioData } from "@/lib/data";
 
 export default function ContactPage() {
-  const { phone } = portfolioData?.contact || { phone: "9898697991" };
+  const { phone } = portfolioData?.contact || { phone: "7383021002" };
   
   const fullAddress = "SHED NO-29/1, BARCELONA ESTATE, Sardar Patel Ring Rd, near ODHAV CROSS ROAD, Odhav, Ahmedabad, Gujarat 382345";
   

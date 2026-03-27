@@ -7,7 +7,7 @@ import { portfolioData } from "@/lib/data";
 
 export default function CTASection() {
   const contactData = portfolioData?.contact || {};
-  const phone = contactData.phone || "919898697991";
+  const phone = contactData.phone || "917383021002";
   
   const email = "allbum@coloursphotobooks.in";
   

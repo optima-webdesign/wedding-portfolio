@@ -11,7 +11,7 @@ export default function Footer() {
   
   const location = contactData.location || "SHED NO-29/1, BARCELONA ESTATE, Sardar Patel Ring Rd, near ODHAV CROSS ROAD, Odhav, Ahmedabad, Gujarat 382345";
   
-  const phone = contactData.phone || "919898697991";
+  const phone = contactData.phone || "917383021002";
 
   return (
     <footer className="relative bg-white text-neutral-600 pt-20 pb-10 px-6 md:px-12 z-20 border-t border-neutral-100">

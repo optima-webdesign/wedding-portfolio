@@ -7,7 +7,7 @@ import { portfolioData } from "@/lib/data";
 export default function FloatingWhatsApp() {
   // Safe data fetching with fallbacks
   const contactData = portfolioData?.contact || {};
-  const phone = contactData.phone || "919898697991";
+  const phone = contactData.phone || "917383021002";
   const whatsappMessage = contactData.whatsappMessage || "Hi, I viewed your portfolio and want to inquire about printing a premium photobook.";
   
   // WhatsApp Link Generator

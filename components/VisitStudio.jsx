@@ -9,8 +9,8 @@ export default function VisitStudio() {
   const contactData = portfolioData?.contact || {};
   
   const address = contactData.address || "SHED NO-29/1, BARCELONA ESTATE, Sardar Patel Ring Rd, near ODHAV CROSS ROAD, Odhav, Ahmedabad, Gujarat 382345";
-  const phone = contactData.phone || "919898697991";
-  const displayPhone = contactData.displayPhone || "+91 98986 97991";
+  const phone = contactData.phone || "917383021002";
+  const displayPhone = contactData.displayPhone || "+91 73830 21002";
   const email = contactData.email || "album@coloursphotobooks.in";
 
   const mapLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
