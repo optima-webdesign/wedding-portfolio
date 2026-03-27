@@ -11,7 +11,7 @@ export default function VisitStudio() {
   const address = contactData.address || "SHED NO-29/1, BARCELONA ESTATE, Sardar Patel Ring Rd, near ODHAV CROSS ROAD, Odhav, Ahmedabad, Gujarat 382345";
   const phone = contactData.phone || "919898697991";
   const displayPhone = contactData.displayPhone || "+91 98986 97991";
-  const email = contactData.email || "allbum@coloursphotobooks.in";
+  const email = contactData.email || "album@coloursphotobooks.in";
 
   const mapLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
 
@@ -125,31 +125,24 @@ export default function VisitStudio() {
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true, margin: "-50px" }}
-          className="relative w-full aspect-4/3 sm:aspect-square md:aspect-4/3 lg:aspect-square bg-white rounded-4xl lg:rounded-[3rem] p-3 sm:p-5 lg:p-6 flex items-center justify-center shadow-[0_20px_60px_rgba(0,0,0,0.06)] border border-neutral-100 group"
+          className="relative w-full aspect-4/3 sm:aspect-square md:aspect-4/3 lg:aspect-square bg-white rounded-4xl lg:rounded-[2.5rem] overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.1)] group cursor-pointer block"
         >
-          <a 
-            href={mapLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative w-full h-full rounded-3xl overflow-hidden shadow-inner cursor-pointer block"
-            aria-label="Open location in Google Maps"
-          >
+          <a href={mapLink} target="_blank" rel="noopener noreferrer" className="relative w-full h-full block">
             <Image
               src="/images/ahmedabad-map.png" 
-              alt="Studio Location Map in Ahmedabad"
+              alt="Colours Photobooks Studio Map"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             />
             
-            <div className="absolute inset-0 bg-neutral-900/5 group-hover:bg-neutral-900/20 transition-colors duration-500 flex items-center justify-center">
+            <div className="absolute inset-0 bg-neutral-900/10 group-hover:bg-neutral-900/30 transition-colors duration-500 flex items-center justify-center backdrop-blur-[1px]">
               <div className="bg-white text-neutral-900 px-6 py-3 rounded-full font-bold text-sm flex items-center gap-2 shadow-2xl transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                Get Directions <FiExternalLink className="text-lg" />
+                <FiMapPin className="text-lg text-cyan-500" /> View on Google Maps
               </div>
             </div>
-          </a>
 
-          <div className={`absolute top-10 left-10 -right-2.5 -bottom-2.5 ${cmykGradient} opacity-0 blur-2xl rounded-full -z-10 group-hover:opacity-10 transition-opacity duration-700`}></div>
+          </a>
         </motion.div>
 
       </div>

@@ -28,9 +28,11 @@ export default function OfferBanner() {
 
   useEffect(() => {
     const updateWidth = () => {
-      if (carouselRef.current) {
-        setWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
-      }
+      setTimeout(() => {
+        if (carouselRef.current) {
+          setWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
+        }
+      }, 300);
     };
     
     updateWidth();
@@ -39,8 +41,8 @@ export default function OfferBanner() {
   }, []);
 
   return (
-    <section id="offers" className="relative py-20 bg-neutral-50 overflow-hidden">
-      <div className="max-w-360 mx-auto">
+    <section id="offers" className="relative py-20 bg-neutral-50 overflow-hidden w-full">
+      <div className="max-w-360 mx-auto w-full">
         
         <div className="text-center mb-12 px-5">
           <motion.h2 
@@ -75,39 +77,43 @@ export default function OfferBanner() {
 
         <motion.div 
           ref={carouselRef} 
-          className="relative flex overflow-hidden py-8 cursor-grab active:cursor-grabbing px-4"
+          className="relative flex overflow-hidden py-8 px-4 md:px-8 cursor-grab active:cursor-grabbing w-full"
         >
           <motion.div 
             drag="x" 
             dragConstraints={{ right: 0, left: -width }} 
             dragElastic={0.15} 
-            className="flex gap-6 items-center w-max"
+            className="flex gap-6 md:gap-8 items-start w-max pl-4 pr-10" 
           >
             {offerImages.map((item, index) => (
               <motion.div 
                 key={index}
                 whileHover={{ scale: 1.02 }}
-                className="relative shrink-0 rounded-2xl md:rounded-4xl bg-white border border-neutral-200 shadow-[0_8px_30px_rgba(0,0,0,0.06)] overflow-hidden group"
+                className="relative shrink-0 w-[85vw] sm:w-87.5 lg:w-100 h-fit bg-white p-2 rounded-2xl md:rounded-4xl border border-neutral-200 shadow-lg overflow-hidden group"
               >
+                
                 <Image
                   src={item.src}
-                  alt="Colours Photobooks Special Offer"
-                  width={400} 
-                  height={600}
-                  className="h-70 sm:h-87.5 md:h-112.5 w-auto object-contain p-1.5 md:p-2 transition-transform duration-500 group-hover:scale-[1.03] pointer-events-none"
+                  alt={`Colours Photobooks Special Offer ${item.id}`}
+                  width={800}
+                  height={1200}
+                  className="w-full h-auto object-contain rounded-xl md:rounded-3xl pointer-events-none"
+                  sizes="(max-width: 640px) 90vw, (max-width: 1024px) 350px, 400px"
+                  priority={index < 3}
                 />
 
-                <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20 backdrop-blur-[2px] pointer-events-none group-hover:pointer-events-auto">
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20 backdrop-blur-[2px] rounded-2xl md:rounded-4xl">
                   <a 
                     href={`https://wa.me/${phone}?text=Hi, I am interested in your printing offers!`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 bg-[#25D366] text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-bold text-base md:text-lg shadow-2xl hover:bg-[#1ebe57] transition-all transform translate-y-4 group-hover:translate-y-0 active:scale-95 cursor-pointer pointer-events-auto"
+                    className="flex items-center gap-2 bg-[#25D366] text-white px-5 py-3 md:px-6 md:py-4 rounded-full font-bold text-sm md:text-base shadow-2xl hover:bg-[#1ebe57] transition-all transform translate-y-4 group-hover:translate-y-0 active:scale-95 cursor-pointer pointer-events-auto"
                   >
                     <FaWhatsapp className="text-xl md:text-2xl" />
                     Message on WhatsApp
                   </a>
                 </div>
+
               </motion.div>
             ))}
           </motion.div>

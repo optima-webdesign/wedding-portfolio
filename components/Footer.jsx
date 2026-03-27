@@ -94,7 +94,7 @@ export default function Footer() {
             <div className="w-10 h-10 rounded-full bg-yellow-50 flex items-center justify-center shrink-0 group-hover:bg-yellow-100 transition-colors">
               <FiMail className="text-lg text-yellow-500" />
             </div>
-            <p className="font-medium text-sm break-all">allbum@coloursphotobooks.in</p>
+            <p className="font-medium text-sm break-all">album@coloursphotobooks.in</p>
           </div>
         </div>
 

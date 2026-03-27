@@ -10,7 +10,7 @@ export default function ContactPage() {
   
   const fullAddress = "SHED NO-29/1, BARCELONA ESTATE, Sardar Patel Ring Rd, near ODHAV CROSS ROAD, Odhav, Ahmedabad, Gujarat 382345";
   
-  const cmykGradient = "bg-linear-to-r from-cyan-500 via-blue-500 via-red-500 to-yellow-400";
+  const cmykGradient = "bg-gradient-to-r from-cyan-500 via-blue-500 via-red-500 to-yellow-400";
 
   const handleWhatsAppSubmit = (e) => {
     e.preventDefault();
@@ -111,7 +111,7 @@ export default function ContactPage() {
               <FiMail className="text-2xl text-red-500" />
             </div>
             <p className="text-neutral-400 font-bold uppercase tracking-widest text-[9px] md:text-[10px] mb-2">Email Us</p>
-            <h4 className="text-lg md:text-xl font-black text-neutral-900">allbum@coloursphotobooks.in</h4>
+            <h4 className="text-lg md:text-xl font-black text-neutral-900">album@coloursphotobooks.in</h4>
           </motion.div>
 
           <motion.div whileHover={{ y: -5 }} className="bg-white p-8 md:p-10 rounded-[2.5rem] flex flex-col items-center text-center shadow-sm border border-neutral-100">
@@ -123,22 +123,6 @@ export default function ContactPage() {
           </motion.div>
 
         </div>
-
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.98 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          className="w-full h-87.5 md:h-125 rounded-[2.5rem] md:rounded-[4rem] overflow-hidden relative border-6 md:border-12 border-white shadow-2xl"
-        >
-          <iframe 
-            src={`http://googleusercontent.com/maps.google.com/6{encodeURIComponent(fullAddress)}&t=&z=14&ie=UTF8&iwloc=&output=embed`}
-            width="100%" 
-            height="100%" 
-            style={{ border: 0 }} 
-            allowFullScreen="" 
-            loading="lazy" 
-            className="grayscale hover:grayscale-0 transition-all duration-700"
-          ></iframe>
-        </motion.div>
 
       </div>
     </main>
