@@ -14,7 +14,7 @@ export default function HeroBackgroundImage() {
   const subtext = heroData.subtext || "Premium HP Indigo printing, handcrafted in Ahmedabad. We bring your digital memories to life in true, vibrant colours.";
   const ctaTexts = heroData.ctaTexts || { whatsapp: "Get Quote on WhatsApp", gallery: "Explore Gallery" };
   
-  const phone = contactData.phone || "919898697991";
+  const phone = contactData.phone || "917383021002";
   const whatsappMessage = contactData.whatsappMessage || "Hi, I viewed your portfolio and want to inquire about printing a premium photobook.";
 
   const whatsappLink = `https://wa.me/${phone}?text=${encodeURIComponent(whatsappMessage)}`;
