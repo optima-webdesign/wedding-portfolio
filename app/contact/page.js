@@ -8,7 +8,7 @@ import { portfolioData } from "@/lib/data";
 export default function ContactPage() {
   const { phone } = portfolioData?.contact || { phone: "7383021002" };
   
-  const fullAddress = "SHED NO-29/1, BARCELONA ESTATE, Sardar Patel Ring Rd, near ODHAV CROSS ROAD, Odhav, Ahmedabad, Gujarat 382345";
+  const fullAddress = "29 BARCELONA INDUSTRIAL PARK, SP RING ROAD ODHAV, ODHAV CROSS ROAD, AHMEDABAD-382415";
   
   const cmykGradient = "bg-gradient-to-r from-cyan-500 via-blue-500 via-red-500 to-yellow-400";
 

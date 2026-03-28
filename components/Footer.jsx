@@ -9,7 +9,7 @@ import Image from "next/image";
 export default function Footer() {
   const contactData = portfolioData?.contact || {};
   
-  const location = contactData.location || "SHED NO-29/1, BARCELONA ESTATE, Sardar Patel Ring Rd, near ODHAV CROSS ROAD, Odhav, Ahmedabad, Gujarat 382345";
+  const location = contactData.location || "29 BARCELONA INDUSTRIAL PARK, SP RING ROAD ODHAV, ODHAV CROSS ROAD, AHMEDABAD-382415";
   
   const phone = contactData.phone || "917383021002";
 

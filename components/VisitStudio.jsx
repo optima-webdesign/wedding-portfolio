@@ -2,13 +2,13 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { FiMapPin, FiPhone, FiMail, FiExternalLink } from "react-icons/fi";
+import { FiMapPin, FiPhone, FiMail } from "react-icons/fi";
 import { portfolioData } from "@/lib/data";
 
 export default function VisitStudio() {
   const contactData = portfolioData?.contact || {};
   
-  const address = contactData.address || "SHED NO-29/1, BARCELONA ESTATE, Sardar Patel Ring Rd, near ODHAV CROSS ROAD, Odhav, Ahmedabad, Gujarat 382345";
+  const address = contactData.address || "29 BARCELONA INDUSTRIAL PARK, SP RING ROAD ODHAV, ODHAV CROSS ROAD, AHMEDABAD-382415";
   const phone = contactData.phone || "917383021002";
   const displayPhone = contactData.displayPhone || "+91 73830 21002";
   const email = contactData.email || "album@coloursphotobooks.in";
@@ -85,7 +85,7 @@ export default function VisitStudio() {
           >
             Visit Our <br className="hidden sm:block" />
             <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-600 via-blue-600 to-red-500">
-              Studio
+              photo lab
             </span>
           </motion.h2>
 
@@ -125,7 +125,7 @@ export default function VisitStudio() {
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true, margin: "-50px" }}
-          className="relative w-full aspect-4/3 sm:aspect-square md:aspect-4/3 lg:aspect-square bg-white rounded-4xl lg:rounded-[2.5rem] overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.1)] group cursor-pointer block"
+          className="relative w-full aspect-4/3 sm:aspect-square md:aspect-4/3 lg:aspect-square bg-white rounded-3xl lg:rounded-[2.5rem] overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.1)] group cursor-pointer block"
         >
           <a href={mapLink} target="_blank" rel="noopener noreferrer" className="relative w-full h-full block">
             <Image
